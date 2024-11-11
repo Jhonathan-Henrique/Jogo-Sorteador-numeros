@@ -21,6 +21,8 @@ function sortear() {
 
   let mensagemSorteados = document.getElementById('resultado');
   mensagemSorteados.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${sorteados}</label>`
+
+  botaoResetar();
 }
 
 function gerarNumeroAleatorio(min, max){ // Cria uma função onde posso receber 2 parâmetros, min (minimo) max (maximo)
@@ -28,4 +30,24 @@ function gerarNumeroAleatorio(min, max){ // Cria uma função onde posso receber
   max = Math.floor(max); // Arredonda o valor maximo para baixo
   return Math.floor(Math.random() * (max - min + 1)) + min; // return : retorno o resultado / Math.floor() arrendondo para baixo / Math.random() gero um numero (0-1) 0 inclusivo e 1 exclusivo
 
+}
+
+function botaoResetar(){
+  let btnResete = document.getElementById('btn-reiniciar');
+  if (btnResete.classList.contains('container__botao-desabilitado')) {
+    btnResete.classList.remove('container__botao-desabilitado');
+    btnResete.classList.add('container__botao');
+  } else {
+    btnResete.classList.remove('container__botao');
+    btnResete.classList.add('container__botao-desabilitado');
+  }
+}
+
+function reiniciar(){
+  document.getElementById('quantidade').value = '';
+  document.getElementById('de').value = '';
+  document.getElementById('ate').value = '';
+  document.getElementById('resultado').innerHTML = '<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>'
+
+  botaoResetar();
 }
