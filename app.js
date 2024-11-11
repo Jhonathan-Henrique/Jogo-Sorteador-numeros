@@ -8,13 +8,19 @@ function sortear() {
   let numero;
 
 
-//OBS: Nesse laço de repetiçao eu tive que criar uma variavel 'Numero' para receber os valores aleatorios que serao gerados dentro do laço enquanto o i for menor que a quantidade que a pessoa colocou.
+ //OBS: Nesse laço de repetiçao eu tive que criar uma variavel 'Numero' para receber os valores aleatorios que serao gerados dentro do laço enquanto o i for menor que a quantidade que a pessoa colocou.
   for (let i = 0; i < quantidade; i++){
     numero = gerarNumeroAleatorio(de, ate); // Aqui estou guardando os numeros gerados dentro da variavel numero.
+    
+    while (sorteados.includes(numero)){
+      numero = gerarNumeroAleatorio(de, ate);
+    }
+    
     sorteados.push(numero); // aqui estou pegando nosso array e usando o push para adicionar no nosso array todos os numeros que foram salvos na variavel numero.
   }
 
-  alert (sorteados);
+  let mensagemSorteados = document.getElementById('resultado');
+  mensagemSorteados.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${sorteados}</label>`
 }
 
 function gerarNumeroAleatorio(min, max){ // Cria uma função onde posso receber 2 parâmetros, min (minimo) max (maximo)
